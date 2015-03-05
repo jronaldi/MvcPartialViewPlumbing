@@ -1,0 +1,46 @@
+﻿@model ReportSchedulerPrototype.Controllers.ReportAController.ReportAViewModel
+@{
+    ViewBag.Title = "Report A";
+}
+
+<input id="ControllerBasePath" type="hidden" value="/ReportScheduler/ReportA" />
+
+<div class="jumbotron">
+    <p class="lead">This is a prototype MVC application to help determine the best structure for a common control for report scheduling.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>This is the report specific area</h2>
+        <p>
+            This report form includes the "report scheduling" as a partial, somewhere on the page (here on the right).
+            Javascript will be used to properly handle posts targeted at report scheduling.
+        </p>
+        
+        <!-- This <div> is critical. It must wrap all of the report's filter items so they can be serialized. -->
+        <div id="ReportFilters">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                @Html.LabelFor(model => model.ReportFilter.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ReportFilter.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ReportFilter.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                @Html.LabelFor(model => model.ReportFilter.UserAge, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ReportFilter.UserAge, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ReportFilter.UserAge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4" style="border: 1px dotted red">
+        @Html.Partial("ReportSchedulerPartial", Model.ReportSchedulerFilter)
+    </div>
+</div>
+
+<div>@Html.ActionLink("Switch to Report B", "Index", "ReportB")</div>

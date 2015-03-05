@@ -1,0 +1,32 @@
+﻿@model ReportSchedulerPrototype.DmModels.DmReportSchedulerFilter
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+@Scripts.Render("~/Scripts/Reports/ReportSchedulerPartial.js")
+
+<div id="ReportSchedulerFilters" class="form-horizontal">
+    <h4>Report Scheduler</h4>
+
+    <div class="row">
+        @Html.LabelFor(model => model.DayOfWeek, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DayOfWeek, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DayOfWeek, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(model => model.Repeat, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Repeat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Repeat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="ReportSchedulerSave" type="button" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
