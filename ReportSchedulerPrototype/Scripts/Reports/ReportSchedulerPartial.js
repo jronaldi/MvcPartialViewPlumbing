@@ -4,8 +4,8 @@
 // long as the same "actions" are supported from all reports as far as the report scheduler partial is concerned.
 $(function ()
 {
-    var controllerBasePath = $("#ControllerBasePath").val();
-    $("#ReportSchedulerSave").on("click", function () { ReportSchedulerSave_OnClick(controllerBasePath); });
+    var reportTypeName = $("#ReportTypeName").val();
+    $("#ReportSchedulerSave").on("click", function () { ReportSchedulerSave_OnClick(reportTypeName); });
 });
 
 // Template NOTE:
@@ -19,13 +19,18 @@ $(function ()
 // contains all model state errors (validations) as well as a single "ErrorMessage" field that can be
 // used if we don't want to act on specific model errors.
 // Successful calls are assumed to return nothing.
-function ReportSchedulerSave_OnClick(controllerBasePath)
+function ReportSchedulerSave_OnClick(reportTypeName)
 {
     // Here we would POST to the appropriate report scheduling controller's command handler
     var reportFilters = $("#ReportFilters :input").serialize();
     var reportSchedulerFilters = $("#ReportSchedulerFilters :input").serialize();
 
-    var answer = $.ajax(controllerBasePath + "Save",
+    // We construct the post URL from the report type name, which results in a unique path such as
+    // this example for 'ReportA' : "/ReportScheduler/ReportASave". This way of constructing the path
+    // is dependent upon the location of the scheduler controller and the action names it defines.
+    var saveActionUrl = "/ReportScheduler/" + reportTypeName + "Save";
+
+    var answer = $.ajax(saveActionUrl,
         {
             type: "post",
             data: reportSchedulerFilters + "&" + reportFilters,

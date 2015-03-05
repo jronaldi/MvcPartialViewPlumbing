@@ -3,7 +3,8 @@
     ViewBag.Title = "Report A";
 }
 
-<input id="ControllerBasePath" type="hidden" value="/ReportScheduler/ReportA" />
+<!-- This name will be used to construct the action names to call in ReportSchedulerController -->
+<input id="ReportTypeName" type="hidden" value="ReportA" />
 
 <div class="jumbotron">
     <p class="lead">This is a prototype MVC application to help determine the best structure for a common control for report scheduling.</p>
@@ -27,7 +28,6 @@
                     @Html.ValidationMessageFor(model => model.ReportFilter.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="row">
                 @Html.LabelFor(model => model.ReportFilter.UserAge, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
