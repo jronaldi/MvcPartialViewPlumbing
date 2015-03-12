@@ -30,12 +30,18 @@ namespace ReportSchedulerPrototype.DmModels
 
         public DmMvcErrorResult(ModelStateDictionary modelState)
         {
-            var modelErrors = from x in modelState where x.Value.Errors.Count > 0 select new KeyValuePair<string, ModelError>(x.Key, x.Value.Errors.FirstOrDefault());
+#if true    // One-liner version of model state serialization
+            ModelState = 
+                (from x in modelState where x.Value.Errors.Count > 0 
+                    select new KeyValuePair<string, string>(x.Key, x.Value.Errors.First().ErrorMessage)).ToDictionary(p=>p.Key, p=>p.Value);
+#else
+            var modelErrors = from x in modelState where x.Value.Errors.Count > 0 select new KeyValuePair<string, string>(x.Key, x.Value.Errors.FirstOrDefault().ErrorMessage);
             ModelState = new Dictionary<string, string>(modelErrors.Count());
             foreach (var item in modelErrors)
             {
-                ModelState.Add(item.Key, item.Value.ErrorMessage);
+                ModelState.Add(item.Key, item.Value);
             }
+#endif
         }
     }
 }
