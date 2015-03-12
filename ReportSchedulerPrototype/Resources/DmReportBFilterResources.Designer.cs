@@ -77,5 +77,23 @@ namespace ReportSchedulerPrototype.Resources {
                 return ResourceManager.GetString("DayOfMonthRequired", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone Number.
+        /// </summary>
+        internal static string ExampleFilterProp1 {
+            get {
+                return ResourceManager.GetString("ExampleFilterProp1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        internal static string ExampleFilterProp2 {
+            get {
+                return ResourceManager.GetString("ExampleFilterProp2", resourceCulture);
+            }
+        }
     }
 }

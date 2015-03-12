@@ -123,4 +123,10 @@
   <data name="DayOfMonthRequired" xml:space="preserve">
     <value>The day of the month is required.</value>
   </data>
+  <data name="ExampleFilterProp1" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="ExampleFilterProp2" xml:space="preserve">
+    <value>City</value>
+  </data>
 </root>

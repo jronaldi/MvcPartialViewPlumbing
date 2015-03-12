@@ -17,6 +17,20 @@
             This report form includes the "report scheduling" as a partial, somewhere on the page (here on the right).
             Javascript will be used to properly handle posts targeted at report scheduling.
         </p>
+        <div>
+            <br/><table>
+                <thead><tr><th>Filter Item</th><th>Filter Value</th></tr></thead>
+                @{
+                    foreach (var filterItem in Model.FilterDisplayList)
+                    {
+                        <tr>
+                            <td style="background-color:red; color:white;">@filterItem.Key</td>
+                            <td style="background-color:yellow; color:black;">@filterItem.Value</td>
+                        </tr>
+                    }
+                }
+            </table><br/>
+        </div>
 
         <!-- This <div> is critical. It must wrap all of the report's filter items so they can be serialized. -->
         <div id="ReportFilters">
