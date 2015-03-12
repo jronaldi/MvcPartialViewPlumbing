@@ -9,7 +9,7 @@ namespace ReportSchedulerPrototype.DmModels
 {
     public class DmMvcErrorResult
     {
-        public string _errorMessage = null;
+        private string _errorMessage = null;
         public string ErrorMessage 
         {
             get {
@@ -26,7 +26,7 @@ namespace ReportSchedulerPrototype.DmModels
             set { _errorMessage = value; }
         }
 
-        public Dictionary<string, string> ModelState { get; set; }
+        public Dictionary<string, string> ModelState { get; private set; }
 
         public DmMvcErrorResult(ModelStateDictionary modelState)
         {
